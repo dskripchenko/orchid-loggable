@@ -1,0 +1,41 @@
+{
+    "name": "dskripchenko/orchid-loggable",
+    "description": "Change logs for orchid platform.",
+    "license": "MIT",
+    "homepage": "https://github.com/dskripchenko/orchid-loggable",
+    "keywords": [
+        "laravel",
+        "logs",
+        "orchid"
+    ],
+    "authors": [
+        {
+            "name": "Denis Skripchenko",
+            "email": "denskrp90@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "11.*",
+        "dskripchenko/php-array-helper": "^1.1",
+        "dskripchenko/orchid-extra": ">=2.1.2"
+    },
+    "require-dev": {
+        "roave/security-advisories": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dskripchenko\\OrchidLoggable\\": [
+                "src/"
+            ]
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dskripchenko\\OrchidLoggable\\Providers\\LoggableServiceProvider",
+                "Dskripchenko\\OrchidLoggable\\Providers\\LoggableEventServiceProvider",
+                "Dskripchenko\\OrchidLoggable\\Providers\\LoggableRouteServiceProvider"
+            ]
+        }
+    }
+}
