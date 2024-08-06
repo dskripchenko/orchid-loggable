@@ -137,12 +137,7 @@ class ChangeLog extends Model implements LoggableEntity
      */
     public static function getAvailableLoggableEntitiesMap(): array
     {
-        return array_merge_deep(
-            [
-                static::class => __('Log record'),
-            ],
-            static::$availableEntities
-        );
+        return static::$availableEntities;
     }
 
     public static function registerLoggableEntity(string $name, string $entity): void
