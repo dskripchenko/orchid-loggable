@@ -15,6 +15,7 @@ use Psr\Log\LogLevel;
  * @method static void withUser(?User $user)
  * @method static void withEntity(?Model $entity)
  * @method static string beautify($value)
+ * @method static void blind(bool $blind = true)
  */
 class ChangeLogFacade extends Facade
 {
