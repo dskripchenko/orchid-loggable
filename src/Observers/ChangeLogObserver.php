@@ -72,7 +72,7 @@ class ChangeLogObserver
             $value = $this->service->beautify($value);
 
             $details[] = __('The') . "
-<b style='color: red'>$key</b>" . __('attribute has been changed') . "
+<b style='color: red'> $key </b>" . __('attribute has been changed') . "
 <br>
 <b>" . __('from') . " : </b>
 <div style='color: #1a88ff'>$oldValue</div>
@@ -107,7 +107,7 @@ class ChangeLogObserver
         if (!$changes) {
             return;
         }
-        $message = __('The entity has been updated') . "<br/> $changes";
+        $message = __('The entity has been updated') . " <br/> $changes";
 
         $this->service->log($this->getUser(), $entity, $message);
     }
