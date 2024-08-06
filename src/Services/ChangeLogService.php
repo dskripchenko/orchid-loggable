@@ -91,7 +91,7 @@ class ChangeLogService
             }
 
             if (empty($value)) {
-                return "<span style='color: red'>empty</span>";
+                return "<span style='color: red'>" . __('Empty') . "</span>";
             }
 
             if (is_array($value)) {

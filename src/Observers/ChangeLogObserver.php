@@ -71,14 +71,14 @@ class ChangeLogObserver
             $oldValue = $this->service->beautify($oldValue);
             $value = $this->service->beautify($value);
 
-            $details[] = <<<RAW_STR
-The <b style='color: red'>$key</b> attribute value changed
+            $details[] = __('The') . "
+<b style='color: red'>$key</b>" . __('attribute has been changed') . "
 <br>
-<b>с : </b>
+<b>" . __('from') . " : </b>
 <div style='color: #1a88ff'>$oldValue</div>
-<b>на : </b>
+<b>" . __('to') . " : </b>
 <div  style='color: #53b96a'>$value</div>
-RAW_STR;
+";
         }
         return implode('<hr/>', $details);
     }
@@ -91,10 +91,7 @@ RAW_STR;
     public function created(Model $entity): void
     {
         $changes = $this->getEntityChanges($entity);
-        $message = <<<RAW_STR
-The entity has been added <br/>
-$changes
-RAW_STR;
+        $message = __('The entity has been added') . " <br/> $changes";
 
         $this->service->log($this->getUser(), $entity, $message, LogLevel::NOTICE);
     }
@@ -110,10 +107,7 @@ RAW_STR;
         if (!$changes) {
             return;
         }
-        $message = <<<RAW_STR
-The entity has been updated <br/>
-$changes
-RAW_STR;
+        $message = __('The entity has been updated') . "<br/> $changes";
 
         $this->service->log($this->getUser(), $entity, $message);
     }
@@ -125,9 +119,7 @@ RAW_STR;
      */
     public function deleted(Model $entity): void
     {
-        $message = <<<RAW_STR
-The entity has been deleted
-RAW_STR;
+        $message = __('The entity has been deleted');
 
         $this->service->log($this->getUser(), $entity, $message, LogLevel::WARNING);
     }
@@ -139,9 +131,7 @@ RAW_STR;
      */
     public function restored(Model $entity): void
     {
-        $message = <<<RAW_STR
-The entity has been restored
-RAW_STR;
+        $message = __('The entity has been restored');
 
         $this->service->log($this->getUser(), $entity, $message);
     }
@@ -153,9 +143,7 @@ RAW_STR;
      */
     public function forceDeleted(Model $entity): void
     {
-        $message = <<<RAW_STR
-Entity has been permanently deleted
-RAW_STR;
+        $message = __('Entity has been permanently deleted');
 
         $this->service->log($this->getUser(), $entity, $message, LogLevel::CRITICAL);
     }

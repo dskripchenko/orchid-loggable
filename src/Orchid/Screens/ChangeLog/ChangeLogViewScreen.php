@@ -28,6 +28,13 @@ class ChangeLogViewScreen extends BaseEditScreen
      */
     public ?string $permission = 'platform.change_logs';
 
+    public function __construct()
+    {
+        $this->name = (string) __($this->name);
+        $this->description = (string) __($this->description);
+        parent::__construct();
+    }
+
     /**
      * @return Model
      */
@@ -39,7 +46,7 @@ class ChangeLogViewScreen extends BaseEditScreen
     /**
      * @return ChangeLogViewLayout
      */
-    protected function getEditLayoutClass()
+    protected function getEditLayoutClass(): ChangeLogViewLayout
     {
         return new ChangeLogViewLayout($this->getCurrentEntity());
     }

@@ -25,7 +25,7 @@ class LoggableEventServiceProvider extends ServiceProvider
 
         Event::listen(AddRoleEvent::class, static function (AddRoleEvent $event) {
             $changes = ChangeLogFacade::beautify($event->roles);
-            $message = "The user roles has been changed <br/> $changes";
+            $message = __('The user roles has been changed') . " <br/> $changes";
             ChangeLogFacade::log(Auth::user(), $event->user, $message, LogLevel::WARNING);
         });
     }

@@ -18,6 +18,7 @@ use Orchid\Screen\Actions\Link;
 use Orchid\Screen\AsSource;
 use Orchid\Support\Color;
 use Psr\Log\LogLevel;
+use RuntimeException;
 use Throwable;
 
 /**
@@ -43,9 +44,7 @@ class ChangeLog extends Model implements LoggableEntity
     use Filterable;
     use Sortable;
 
-    public const AVAILABLE_ENTITIES = [
-        //LoggableEntity::class => 'label'
-    ];
+    protected static array $availableEntities = [];
 
     /**
      * @var string[]
@@ -125,12 +124,39 @@ class ChangeLog extends Model implements LoggableEntity
     public static function getAvailableLoggableEntities(): array
     {
         $items = [];
-        foreach (array_keys(static::AVAILABLE_ENTITIES) as $entity) {
+        foreach (array_keys(static::getAvailableLoggableEntitiesMap()) as $entity) {
             if (is_subclass_of($entity, LoggableEntity::class)) {
                 $items[] = $entity;
             }
         }
         return $items;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getAvailableLoggableEntitiesMap(): array
+    {
+        return array_merge_deep(
+            [
+                static::class => __('Log record'),
+            ],
+            static::$availableEntities
+        );
+    }
+
+    public static function registerLoggableEntity(string $name, string $entity): void
+    {
+        if (!is_subclass_of($entity, LoggableEntity::class)) {
+            throw new RuntimeException(
+                sprintf(
+                    __("Entity %s must be subclass of %s"),
+                    $entity,
+                    LoggableEntity::class
+                )
+            );
+        }
+        static::$availableEntities[$entity] = $name;
     }
 
     /**
@@ -174,7 +200,7 @@ class ChangeLog extends Model implements LoggableEntity
             'User' => (
                 $user
                     ? $user->getKey()
-                    : 'Не установлен'
+                    : __('Not set')
             ),
             'Title' => (
                 $entity
@@ -187,7 +213,7 @@ class ChangeLog extends Model implements LoggableEntity
             'Message' => (
                 $this->message
                     ? new HtmlString($this->message)
-                    : 'Не установлено'
+                    : __('Not set')
             ),
         ];
     }
@@ -220,7 +246,7 @@ class ChangeLog extends Model implements LoggableEntity
         }
 
         if (!$description) {
-            return "Empty";
+            return __("Empty");
         }
 
         return $description;
@@ -231,7 +257,7 @@ class ChangeLog extends Model implements LoggableEntity
      */
     public function getLoggableTitle(): string
     {
-        return 'Log record';
+        return __('Log record');
     }
 
     /**

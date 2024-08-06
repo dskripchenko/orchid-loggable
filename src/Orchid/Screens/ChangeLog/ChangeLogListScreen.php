@@ -33,6 +33,13 @@ class ChangeLogListScreen extends BaseListScreen
      */
     public ?string $permission = 'platform.change_logs';
 
+    public function __construct()
+    {
+        $this->name = (string) __($this->name);
+        $this->description = (string) __($this->description);
+        parent::__construct();
+    }
+
     /**
      * @return Model
      */

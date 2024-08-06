@@ -19,8 +19,8 @@ class ChangeLogFilterLayout extends Selection
     public function filters(): array
     {
         return [
-            FilterFactory::input('ID', 'id', '='),
-            FilterFactory::selectFromOptions('Level', 'level', [
+            FilterFactory::input(__('ID'), 'id', '='),
+            FilterFactory::selectFromOptions(__('Level'), 'level', [
                 LogLevel::DEBUG => mb_strtoupper(LogLevel::DEBUG),
                 LogLevel::INFO => mb_strtoupper(LogLevel::INFO),
                 LogLevel::NOTICE => mb_strtoupper(LogLevel::NOTICE),
@@ -30,10 +30,10 @@ class ChangeLogFilterLayout extends Selection
                 LogLevel::ALERT => mb_strtoupper(LogLevel::ALERT),
                 LogLevel::EMERGENCY => mb_strtoupper(LogLevel::EMERGENCY),
             ]),
-            FilterFactory::selectFromQuery('User', 'user_id', User::query()),
-            FilterFactory::selectFromOptions('Entity Type', 'entity_type', ChangeLog::AVAILABLE_ENTITIES),
-            FilterFactory::input('Message', 'message'),
-            FilterFactory::date('Created At', 'created_at'),
+            FilterFactory::selectFromQuery(__('User'), 'user_id', User::query()),
+            FilterFactory::selectFromOptions(__('Entity Type'), 'entity_type', ChangeLog::getAvailableLoggableEntitiesMap()),
+            FilterFactory::input(__('Message'), 'message'),
+            FilterFactory::date(__('Created At'), 'created_at'),
         ];
     }
 }

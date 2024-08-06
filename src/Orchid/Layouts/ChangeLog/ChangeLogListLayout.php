@@ -44,11 +44,11 @@ class ChangeLogListLayout extends BaseListLayout
     public function getColumns(): array
     {
         return [
-            TD::make('id', 'ID')
+            TD::make('id', __('ID'))
                 ->sort()
                 ->defaultHidden(),
 
-            TD::make('level', 'Level')
+            TD::make('level', __('Level'))
                 ->render(fn(ChangeLog $log) =>
                     Link::make(mb_strtoupper($log->level))
                         ->type($log->color)
@@ -56,13 +56,13 @@ class ChangeLogListLayout extends BaseListLayout
                         ->set('turbo', false))
                 ->sort(),
 
-            TD::make('user_id', 'User')
+            TD::make('user_id', __('User'))
                 ->render(fn(ChangeLog $log) => $log->user
                     ? $log->user->getKey()
-                    : 'Не установлен')
+                    : __('Not set'))
                 ->sort(),
 
-            TD::make('entity_type', 'Entity Type')
+            TD::make('entity_type', __('Entity Type'))
                 ->render(fn(ChangeLog $log) => $log->entity
                     ? Link::make(Str::limit($log->entity->getLoggableTitle()))
                         ->href($log->entity->getLoggableUrl())
@@ -71,7 +71,7 @@ class ChangeLogListLayout extends BaseListLayout
 
                 ->sort(),
 
-            TD::make('message', 'Message')
+            TD::make('message', __('Message'))
                 ->render(fn(ChangeLog $log) => Str::limit(Arr::first(explode('<br/>', (string) $log->message)), 50))
                 ->sort(),
         ];
