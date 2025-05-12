@@ -15,7 +15,7 @@
         }
     ],
     "require": {
-        "laravel/framework": "11.*",
+        "laravel/framework": "11.*|12.*",
         "dskripchenko/php-array-helper": "^1.1",
         "dskripchenko/orchid-extra": ">=2.1.2"
     },
