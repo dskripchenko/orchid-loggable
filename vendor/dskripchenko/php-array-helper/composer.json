@@ -1,0 +1,22 @@
+{
+    "name": "dskripchenko/php-array-helper",
+    "description": "Additional array functions",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Denis Skripchenko",
+            "email": "denskrp90@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [
+            "src/functions.php"
+        ]
+    },
+  "require": {
+    "php": "^8.2",
+    "ext-json": "*"
+  }
+}

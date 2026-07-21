@@ -15,12 +15,10 @@
         }
     ],
     "require": {
-        "laravel/framework": "11.*|12.*",
+        "php": "^8.2",
+        "laravel/framework": "^11.0 || ^12.0 || ^13.0",
         "dskripchenko/php-array-helper": "^1.1",
-        "dskripchenko/orchid-extra": ">=2.1.2"
-    },
-    "require-dev": {
-        "roave/security-advisories": "dev-master"
+        "dskripchenko/orchid-extra": "^2.2"
     },
     "autoload": {
         "psr-4": {

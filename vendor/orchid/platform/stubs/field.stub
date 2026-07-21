@@ -1,0 +1,38 @@
+<?php
+
+namespace DummyNamespace;
+
+use Orchid\Screen\Field;
+
+class DummyClass extends Field
+{
+    /**
+     * The Blade view used to render the field.
+     *
+     * @var string
+     */
+    protected $view = '{{ view }}';
+
+    /**
+     * Default attributes for the field.
+     *
+     * @var array
+     */
+    protected $attributes = [
+        'placeholder' => 'Enter text...',
+        'class'       => 'form-control',
+        'type'        => 'text',
+    ];
+
+    /**
+     * List of attributes available for the HTML tag.
+     *
+     * @var array
+     */
+    protected $inlineAttributes = [
+        'placeholder',
+        'value',
+        'type',
+        'name'
+    ];
+}
