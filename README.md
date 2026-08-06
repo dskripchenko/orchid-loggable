@@ -3,8 +3,10 @@
 Change-log / audit trail for [Orchid](https://orchid.software/) platform models.
 Records create / update / delete changes and ships Orchid screens to browse them.
 
+> 🌐 **English** · [Deutsch](docs/de/README.md) · [Русский](docs/ru/README.md) · [中文](docs/zh/README.md)
+
 [![Packagist](https://img.shields.io/packagist/v/dskripchenko/orchid-loggable)](https://packagist.org/packages/dskripchenko/orchid-loggable)
-[![License](https://img.shields.io/packagist/l/dskripchenko/orchid-loggable)](LICENSE)
+[![License](https://img.shields.io/packagist/l/dskripchenko/orchid-loggable)](LICENSE.md)
 
 ## Requirements
 
@@ -58,4 +60,4 @@ each entry is titled and linked in that UI.
 
 ## License
 
-[MIT](LICENSE) © Denis Skripchenko
+[MIT](LICENSE.md) © Denis Skripchenko
